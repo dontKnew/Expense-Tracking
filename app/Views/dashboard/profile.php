@@ -1,5 +1,6 @@
 <?= $this->extend('dashboard/index') ?>
 <?= $this->section('dashboard-body') ?>
+<?php require(APPPATH.'views/dashboard/include/sidebar.php') ?>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <ol class="breadcrumb">
@@ -52,7 +53,7 @@
 							</div>
 							<div class="form-group">
 								<label style="color:#000">Registration Date</label>
-								<?php echo form_input(['name' => 'regdate', 'type'=>'date', 'id' => 'regdate', 'class' => 'form-control', 'readonly' => 'true', 'value' => set_value('fromdate', session('user_regDate'))]);?>
+								<?php echo form_input(['name' => 'regdate', 'id' => 'regdate', 'class' => 'form-control', 'readonly' => 'true', 'value' => set_value('fromdate', session('user_regDate'))]);?>
 							</div>
 
 							<div class="form-group has-success">
@@ -60,6 +61,7 @@
 							</div>
 						</div>
 						<?php echo form_close(); ?>
+						</form>
 					</div>
 				</div>
 			</div><!-- /.panel-->

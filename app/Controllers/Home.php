@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 use App\Models\User;
+use Exception;
+
 class Home extends BaseController
 {
     public function index()
@@ -60,6 +62,7 @@ class Home extends BaseController
 
     public function login()
         {
+        helper('form');
             $session = session();
             $model = new User();
             
@@ -100,6 +103,87 @@ class Home extends BaseController
                 $data['validation'] = $this->validator;
                 return view('/', $data);
             }
+            return view('/');
+        }
+
+        public function resetPassword()
+        {
+            helper('form');
+            if($this->request->getMethod()=="post"){
+                $session = session();
+                $model = new User();
+                
+                $rules = [
+                    'email'         => 'required|min_length[6]|max_length[50]|valid_email',
+                    'mobileno'      => 'required|min_length[10]|max_length[15]',
+                ];
+                if($this->validate($rules)){
+                    $email = $this->request->getVar('email');
+                    $mobileno = $this->request->getVar('mobileno');
+                    $data = $model->where(['Email'=> $email, "MobileNumber"=>$mobileno])->first();
+                    if($data){
+                        $session->set("email",$email);
+                        $session->set("resetPassword",true);
+                        return redirect()->to('reset-password2'); 
+                    }else {
+                        $session->setFlashdata('error', 'Please enter correct information');
+                        return redirect()->to('reset-password');
+                    }
+                }else {
+                    $data['validation'] = $this->validator;
+                    return view('reset_password', $data);
+                }
+            }
+            return view('reset_password');
+        }
+
+        public function resetPassword2()
+        {
+            helper('form');
+            if($this->request->getMethod()=="post"){
+                $session = session();
+                $model = new User();
+                
+                $rules = [
+                    'email'         => 'required|min_length[6]|max_length[50]|valid_email',
+                    'password'         => 'required|min_length[6]|max_length[200]',
+                    'confirmpassword'      => 'required|min_length[6]|max_length[200]',
+                ];
+                if($this->validate($rules)){
+                    
+                    $password = $this->request->getVar('password');
+                    $confirmpassword = $this->request->getVar('confirmpassword');
+                    $email = $this->request->getVar('email');
+                    
+                    if($password === $confirmpassword){
+                        $data = $model->where(['Email'=> $email])->first();
+                        if($data['Password'] == md5($password)){
+                            $session->setFlashdata('success', 'Old Password could not become new password');  
+                            return redirect()->to('reset-password2');
+                        }else {
+                            $data1 = ["Password" => md5($password)];
+                            try {
+                                    $model->update($data['ID'], $data1);
+                                    $session->remove('resetPassword');
+                                    $session->remove('email');
+                                    $session->setFlashdata('success', 'Password change successfull '); 
+                                    return redirect()->to('/');
+                            }catch(Exception $e){
+                                    $session->setFlashdata('error', $e);
+                                    return redirect()->to('reset-password2');
+                            }
+                        }
+                    }else {
+                            $session->setFlashdata('error', 'Please enter same password');
+                            return redirect()->to('reset-password2');
+                    }
+
+                }else {
+                    $data['validation'] = $this->validator;
+                    return view('reset_password2', $data);
+                }
+            }
+            return view('reset_password2');
         }
     
         public function logout()

@@ -40,6 +40,8 @@ $routes->get('register', 'Home::register',["filter"=>'unauth']);
 $routes->post('register', 'Home::addUser',["filter"=>'unauth']);
 $routes->post('login', 'Home::login', ["filter"=>'unauth']);
 $routes->get('logout', 'Home::logout', ["filter"=>'auth']);
+$routes->match(['get','post'], 'reset-password', 'Home::resetPassword', ["filter"=>'unauth']);
+$routes->match(['get','post'], 'reset-password2', 'Home::resetPassword2', ["filter"=>'unauth',"filter"=>'resetAuth']);
 
 $routes->get('dashboard', 'DashboardController::index', ["filter"=>'auth']);
 $routes->match(['get','post'],'changePassword', 'DashboardController::changePassword', ["filter"=>'auth']);

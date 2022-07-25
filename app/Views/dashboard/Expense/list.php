@@ -45,7 +45,7 @@
                                 <?php
                                 if ($count) :
                                     $cnt = 1;
-                                    foreach ($expense as $row) :
+                                    foreach ($expenses as $row) :
                                 ?>
                                         <tbody>
                                             <tr>
@@ -56,7 +56,7 @@
                                                 <td><?php echo $row['ExpenseDate']; ?></td>
                                                 <td><?php echo $row['NoteDate'] ?></td>
                                                 <td><?php if(session('user_id')==$row['UserId']) :?>
-                                                    <?php echo "<strong> You </strong>"?>
+                                                    <?php echo "<strong class='text-warning'> You </strong>"?>
                                                     <?php endif ?>
                                                     <?php if(session('user_id')!==$row['UserId']) :?>
                                                     <?php echo "someone"?>

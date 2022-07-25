@@ -9,6 +9,7 @@ use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 use App\Filters\AuthFilter;
+use App\Filters\ResetAuth;
 use App\Filters\UnauthFilter;
 
 class Filters extends BaseConfig
@@ -27,6 +28,7 @@ class Filters extends BaseConfig
         'secureheaders' => SecureHeaders::class,
         'auth'=> AuthFilter::class,
         'unauth'=> UnauthFilter::class,
+        'resetAuth'=>ResetAuth::class
     ];
 
     /**

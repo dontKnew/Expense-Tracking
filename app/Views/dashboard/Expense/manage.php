@@ -45,7 +45,7 @@
                                 <?php
                                 if ($count) :
                                     $cnt = 1;
-                                    foreach ($expense as $row) :
+                                    foreach ($expenses as $row) :
                                 ?>
                                         <tbody>
                                             <tr>

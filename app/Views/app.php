@@ -19,26 +19,22 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span></button>
-                    <a class="navbar-brand" href="dashboard.php"><span>Daily Expense Tracker</span></a>
+                    <a class="navbar-brand" href="<?= base_url('/')?>"><span> Daily Expense Management </span></a>
                 </div>
             </div>
         </nav>
     <!-- end header -->
     <?= $this->renderSection('main-body') ?>
-
+    <hr>
     <!-- footer -->
-    <div class="col-sm-12">
-		<p class="back-link">Daily Expense Tracker <a href="https://phpgurukul.com">phpgurukul</a></p>
+    <div class="col-sm-12 ">
+		<p class="back-link"> Daily Expense Management - 2022-23</p>
+        <p class="back-link"> Created By - <a href="https://www.github.com/dontknew" class="text-danger"> Failure Boy </a></p>
     </div>
     <!-- end footer -->
 
      <script src="<?= base_url('assets/js/jquery-1.11.1.min.js');?>"></script>
 	<script src="<?= base_url('assets/js/bootstrap.min.js');?>"></script>
-	<script src="<?= base_url('assets/js/chart.min.js');?>"></script>
-	<script src="<?= base_url('assets/js/chart-data.js');?>"></script>
-	<script src="<?= base_url('assets/js/easypiechart.js');?>"></script>
-	<script src="<?= base_url('assets/js/easypiechart-data.js');?>"></script>
-	<script src="<?= base_url('assets/js/bootstrap-datepicker.js');?>"></script>
 	<script src="<?= base_url('assets/js/custom.js');?>"></script> 
 </body>
 </html>

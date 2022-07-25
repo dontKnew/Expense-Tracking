@@ -1,9 +1,6 @@
 <?= $this->extend('app') ?>
 <?= $this->section('main-body') ?>
 <?php require(APPPATH . 'views/dashboard/include/sidebar.php') ?>
-<?= $this->extend('app') ?>
-<?= $this->section('main-body') ?>
-<?php require(APPPATH . 'views/dashboard/include/sidebar.php') ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
@@ -35,26 +32,24 @@
                         <?php
                         if (count($reportdetails)) :
                             $cnt = 1;
+                            $totalExpense = 0;
                             foreach ($reportdetails as $row) :
-
                         ?>
 
                                 <tr>
                                     <td><?php echo $cnt; ?></td>
-
-                                    <td><?php echo $row->ExpenseDate; ?></td>
-                                    <td><?php echo $ttlsl = $row->ExpenseCost; ?></td>
-
-
+                                    <td><?php echo $row['ExpenseDate']; ?></td>
+                                    <td><?php echo  $row['ExpenseCost']; ?></td>
                                 </tr>
                             <?php
-                                $totalsexp += $ttlsl;
                                 $cnt = $cnt + 1;
-                            endforeach; ?>
+                                $totalExpense = $totalExpense + $row['ExpenseCost'];
+                            endforeach; 
+                            ?>
 
                             <tr>
                                 <th colspan="2" style="text-align:center">Grand Total</th>
-                                <td><?php echo $totalsexp; ?></td>
+                                <td><?php echo $totalExpense; ?></td>
                             </tr>
                         <?php else : ?>
                             <tr>

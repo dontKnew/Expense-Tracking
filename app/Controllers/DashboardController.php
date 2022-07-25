@@ -10,8 +10,61 @@ use Exception;
 class DashboardController extends BaseController
 {
     public function index()
-    {
-        return view('dashboard/index');
+    {   
+        helper('form');
+        $session = session();
+        $modelE = new ExpenseModel();
+        
+        $todayExpenseData = array(
+            "ExpenseDate"=>date('Y-m-d'),
+            "UserId"=> $session->get("user_id"),
+        );
+        $todayExpense = $modelE->where($todayExpenseData)->find();
+
+        $yesterdayExpenseData = array(
+            "ExpenseDate"=>date('Y-m-d',strtotime("-1 days")),
+            "UserId"=> $session->get("user_id"),
+        );
+        $yesterdayExpense = $modelE->where($yesterdayExpenseData)->findAll();
+
+        $thisYearExpenseData = array(
+            "year(ExpenseDate)="=>date('Y'),
+            "UserId"=> $session->get("user_id"),
+        );
+        $thisYearExpense = $modelE->where($thisYearExpenseData)->findAll();
+        
+        $fdate = date('Y-m-d',strtotime("-1 week"));
+        $Last7ExpenseData = array(
+            "ExpenseDate>="=>$fdate,
+            "ExpesneDate"=>date('Y-m-d'),
+            // "UserId"=> $session->get("user_id"),
+        );
+        // $Last7Expense = $modelE->where($Last7ExpenseData)->groupBy("ExpenseData")->findAll();   
+        // return print_r($Last7ExpenseData);
+
+        $Last30ExpenseData = array(
+            "ExpenseDate<="=>date('Y-m-d',strtotime("-1 month")),
+            "ExpesneDate>="=>date('Y-m-d'),
+            "UserId"=> $session->get("user_id"),
+        );
+        // $Last30Expense = $modelE->where($Last30ExpenseData)->findAll();
+
+
+        $totalExpenseData = array(
+            "UserId"=> $session->get("user_id"),
+        );
+        $totalExpense = $modelE->where($totalExpenseData)->findAll();
+
+        return view('dashboard/dashboard', [
+                "totalExpense"=>$totalExpense, 
+                "thisYearExpense"=>$thisYearExpense,
+                "Last30Expense"=>00,
+                "Last7Expense"=>00,
+                "todayExpense"=>$todayExpense, 
+                "yesterdayExpense"=>$yesterdayExpense,
+                "dashboard"=>"btn-success"
+            ]
+        );
     }
 
     public function changePassword()
@@ -34,30 +87,33 @@ class DashboardController extends BaseController
                     $session->setFlashdata('error', 'Please enter the same Password');
                     return redirect()->to('changePassword');
                 } else {
-                    if (md5($cpass) == session('user_password')) {
-
-                        $data = ["Password" => md5($newpass)];
-
-                        try {
-                            $userModel->update(session('user_id'), $data);
-                        } catch (Exception $e) {
-                            $session->setFlashdata('Error', $e);
+                        if($newpass == $cpass){
+                            $session->setFlashdata('error', 'Old password could not be as new password');
                             return redirect()->to('changePassword');
+                        }else {
+                            if (md5($cpass) == session('user_password')) {
+                                $data = ["Password" => md5($newpass)];
+                                try {
+                                    $userModel->update(session('user_id'), $data);
+                                } catch (Exception $e) {
+                                    $session->setFlashdata('Error', $e);
+                                    return redirect()->to('changePassword');
+                                }
+                                $session->setFlashdata('success', 'Password is changed success');
+                                return redirect()->to('changePassword');
+                            } else {
+                                $session->setFlashdata('error', 'Please enter correct password');
+                                return redirect()->to('changePassword');
+                            }
                         }
-
-                        $session->setFlashdata('success', 'Password is changed success');
-                        return redirect()->to('changePassword');
-                    } else {
-                        $session->setFlashdata('error', 'Please enter correct password');
-                        return redirect()->to('changePassword');
-                    }
                 }
             } else {
-                $data['validation'] = $this->validator;
-                return view('dashboard/changePassword', $data);
+                // $data['validation'] = $this->validator;
+                // $data['changePassword'] = "btn-success";
+                return view('dashboard/changePassword', ["validation"=>$this->validator, "changePassword"=>"btn-success"]);
             }
         }
-        return view('dashboard/changePassword');
+        return view('dashboard/changePassword', ["changePassword"=>"btn-success"]);
     }
 
     function addExpenses()
@@ -96,7 +152,7 @@ class DashboardController extends BaseController
                 // return print_r($data['alidation']->listErrors());
             }
         }
-        return view('dashboard/Expense/add');
+        return view('dashboard/Expense/add', ["expense"=>"btn-success"]);
     }
 
     public function ManageExpenses()
@@ -105,8 +161,9 @@ class DashboardController extends BaseController
         $session = session();
         $data = $modelE->orderBy("ID", "desc")->where("UserId", $session->get('user_id'))->findAll();
         $expense = [
-            "expense" => $data,
-            "count" => count($data)
+            "expenses" => $data,
+            "count" => count($data),
+            "expense"=>"btn-success"
         ];
         return view('dashboard/Expense/manage', $expense);
     }
@@ -116,8 +173,9 @@ class DashboardController extends BaseController
         $modelE = new ExpenseModel();
         $data = $modelE->orderBy("ID", "desc")->findAll();
         $expense = [
-            "expense" => $data,
-            "count" => count($data)
+            "expenses" => $data,
+            "count" => count($data),
+            "expense"=>"btn-success"
         ];
         return view('dashboard/Expense/list', $expense);
     }
@@ -173,6 +231,6 @@ class DashboardController extends BaseController
                 return view('dashboard/profile', $data);
             }
         }
-        return view('dashboard/profile');
+        return view('dashboard/profile', ["profile"=>"btn-success"] );
     }
 }
