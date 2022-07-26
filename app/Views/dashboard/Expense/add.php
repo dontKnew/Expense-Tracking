@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Expense</div>
+                <div class="panel-heading">Expense <span class="fa fa-arrow-right">&nbsp;</span></div>
 
                 <!--success message -->
                 <?php if (session()->getFlashdata('success')) { ?>

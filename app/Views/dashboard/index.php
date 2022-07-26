@@ -27,10 +27,11 @@
     <?php require(APPPATH.'views/dashboard/include/sidebar.php') ?>
     <?= $this->renderSection('dashboard-body') ?>
 
-    
+
     <!-- footer -->
-    <div class="col-sm-12">
-		<p class="back-link">Daily Expense Tracker <a href="https://phpgurukul.com">phpgurukul</a></p>
+    <div class="col-sm-12 ">
+		<p class="back-link"> Daily Expense Tracker - 2022-23</p>
+        <p class="back-link"> Modified By - <a href="https://www.github.com/dontknew" class="text-danger"> Failure Boy </a></p>
     </div>
     <!-- end footer -->
 
@@ -38,18 +39,6 @@
 	<script src="<?= base_url('assets/js/bootstrap.min.js');?>"></script>
 	<script src="<?= base_url('assets/js/easypiechart.js');?>"></script>
 	<script src="<?= base_url('assets/js/easypiechart-data.js');?>"></script>
-	<script src="<?= base_url('assets/js/custom.js');?>"></script> 
-
-	<script>
-		window.onload = function() {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-				responsive: true,
-				scaleLineColor: "rgba(0,0,0,.2)",
-				scaleGridLineColor: "rgba(0,0,0,.05)",
-				scaleFontColor: "#c5c7cc"
-			});
-		};
-	</script>
+	<script src="<?= base_url('assets/js/custom.js');?>"></script>
 </body>
 </html>

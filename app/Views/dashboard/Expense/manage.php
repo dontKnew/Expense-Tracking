@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading"> <?= session('user_name')?> s'Expense</div>
+                <div class="panel-heading"> <?= session('user_name')?> s'Expense <span class="fa fa-arrow-right">&nbsp;</span></div>
 
                 <div class="panel-body">
                     
@@ -36,7 +36,7 @@
                                     <tr>
                                         <th>S.NO</th>
                                         <th>Expense Item</th>
-                                        <th>Expense Cost</th>
+                                        <th>Expense Cost </th>
                                         <th>Expense Date</th>
                                         <th>Posting Date</th>
                                         <th>Action</th>
@@ -52,7 +52,7 @@
                                                 <td><?php echo $cnt; ?></td>
 
                                                 <td><?php echo $row['ExpenseItem']; ?></td>
-                                                <td><?php echo $row['ExpenseCost']; ?></td>
+                                                <td><i class="fa fa-inr"></i><?php echo $row['ExpenseCost']; ?> <i class="fa fa-inr"></i></td>
                                                 <td><?php echo $row['ExpenseDate']; ?></td>
                                                 <td><?php echo $row['NoteDate'] ?></td>
                                                 <td><?php echo anchor("Expenses/delete/{$row['ID']}", 'Delete'); ?>

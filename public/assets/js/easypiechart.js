@@ -215,13 +215,13 @@ var EasyPieChart = function(el, opts) {
 		barColor: '#ef1e25',
 		trackColor: '#f9f9f9',
 		scaleColor: '#dfe0e0',
-		scaleLength: 5,
+		scaleLength: 10,
 		lineCap: 'round',
-		lineWidth: 3,
-		size: 110,
+		lineWidth: 2,
+		size: 115,
 		rotate: 0,
 		animate: {
-			duration: 1000,
+			duration: 2000,
 			enabled: true
 		},
 		easing: function (x, t, b, c, d) { // more can be found here: http://gsgd.co.uk/sandbox/jquery/easing/

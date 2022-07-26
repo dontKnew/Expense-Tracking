@@ -39,7 +39,8 @@
                 </a></li>
             </ul>
         </li>
-        <li class="<?php if(isset($profile)){echo $profile;}?>"><a href="<?= base_url('Profile'); ?>"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
+        <li class="<?php if(isset($profile)){echo $profile;}?>"><a href="<?= base_url('Profile'); ?>"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+&nbsp;</em> Profile</a></li>
 
         <li class="<?php if(isset($changePassword)){echo $changePassword;}?>"><a href="<?= base_url('changePassword'); ?>"><em class="fa fa-clone">&nbsp;</em> Change Password</a></li>
         <li><a href="<?= base_url('logout'); ?>"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>

@@ -7,7 +7,7 @@
             <li><a href="#">
                     <em class="fa fa-home"></em>
                 </a></li>
-            <li class="active">Profile</li>
+            <li class="active">Profile </li>
         </ol>
     </div>
     <!--/.row-->
@@ -15,7 +15,7 @@
         <div class="col-lg-12">
         <?php echo form_open('Profile', ['name' => 'userprofile']) ?>
         <div class="panel panel-default">
-					<div class="panel-heading">Profile</div>
+					<div class="panel-heading">Profile <span class="fa fa-arrow-right">&nbsp;</span></div>
 
                     <!--success message -->
                     <?php if (session()->getFlashdata('success')) { ?>
@@ -29,7 +29,7 @@
 					<div class="panel-body">
 						<div class="col-md-12">
 							<div class="form-group">
-								<label>Full Name</label>
+								<label> <i class="fa fa-user" aria-hidden="true"></i> Full Name</label>
 								<?php echo form_input(['name' => 'fullname', 'id' => 'fullname', 'class' => 'form-control', 'value' => set_value('fromdate', session('user_name'))]); ?>
                                 <?php if(isset($validation)) { ?>
                                     <div style="color:red"><?= $validation->getError('fullname');?></div>
@@ -37,7 +37,7 @@
 								
 							</div>
 							<div class="form-group">
-								<label style="color:#000">Email</label>
+								<label style="color:#000"> <i class="fa fa-envelope" aria-hidden="true"></i> Email</label>
 								<?php echo form_input(['name' => 'email', 'id' => 'email', 'class' => 'form-control', 'readonly' => 'true', 'value' => set_value('fromdate', session('user_email'))]); ?>
 								<?php if(isset($validation)) { ?>
                                     <div style="color:red"><?= $validation->getError('email');?></div>
@@ -45,14 +45,14 @@
 							</div>
 
 							<div class="form-group">
-								<label style="color:#000">Mobile Number</label>
+								<label style="color:#000"><i class="fa fa-phone-square" aria-hidden="true"></i>  Mobile Number</label>
 								<?php echo form_input(['name' => 'mobileno', 'id' => 'MobileNumber', 'class' => 'form-control', 'value' => set_value('fromdate', session('user_number'))]); ?>
                                 <?php if(isset($validation)) { ?>
                                     <div style="color:red"><?= $validation->getError('mobileno');?></div>
                                 <?php }?>
 							</div>
 							<div class="form-group">
-								<label style="color:#000">Registration Date</label>
+								<label style="color:#000"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Registration Date</label>
 								<?php echo form_input(['name' => 'regdate', 'id' => 'regdate', 'class' => 'form-control', 'readonly' => 'true', 'value' => set_value('fromdate', session('user_regDate'))]);?>
 							</div>
 

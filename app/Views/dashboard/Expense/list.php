@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading"> All Expense</div>
+                <div class="panel-heading"> All Expense <span class="fa fa-arrow-right">&nbsp;</span></div>
 
                 <div class="panel-body">
                     
@@ -52,7 +52,7 @@
                                                 <td><?php echo $cnt; ?></td>
 
                                                 <td><?php echo $row['ExpenseItem']; ?></td>
-                                                <td><?php echo $row['ExpenseCost']; ?></td>
+                                                <td><i class="fa fa-inr"></i><?php echo $row['ExpenseCost']; ?> </td>
                                                 <td><?php echo $row['ExpenseDate']; ?></td>
                                                 <td><?php echo $row['NoteDate'] ?></td>
                                                 <td><?php if(session('user_id')==$row['UserId']) :?>

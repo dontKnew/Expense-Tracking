@@ -19,7 +19,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span></button>
-                    <a class="navbar-brand" href="<?= base_url('/')?>"><span> Daily Expense Management </span></a>
+                    <a class="navbar-brand" href="<?= base_url('/')?>"><span> Daily Expense Tracker </span></a>
                 </div>
             </div>
         </nav>
@@ -28,8 +28,8 @@
     <hr>
     <!-- footer -->
     <div class="col-sm-12 ">
-		<p class="back-link"> Daily Expense Management - 2022-23</p>
-        <p class="back-link"> Created By - <a href="https://www.github.com/dontknew" class="text-danger"> Failure Boy </a></p>
+		<p class="back-link"> Daily Expense Tracker - 2022-23</p>
+        <p class="back-link"> Modified By - <a href="https://www.github.com/dontknew" class="text-danger"> Failure Boy </a></p>
     </div>
     <!-- end footer -->
 

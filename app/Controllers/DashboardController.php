@@ -25,41 +25,44 @@ class DashboardController extends BaseController
             "ExpenseDate"=>date('Y-m-d',strtotime("-1 days")),
             "UserId"=> $session->get("user_id"),
         );
-        $yesterdayExpense = $modelE->where($yesterdayExpenseData)->findAll();
+        $yesterdayExpense = $modelE->where($yesterdayExpenseData)->find();
 
         $thisYearExpenseData = array(
             "year(ExpenseDate)="=>date('Y'),
             "UserId"=> $session->get("user_id"),
         );
-        $thisYearExpense = $modelE->where($thisYearExpenseData)->findAll();
+        $thisYearExpense = $modelE->where($thisYearExpenseData)->find();
         
-        $fdate = date('Y-m-d',strtotime("-1 week"));
-        $Last7ExpenseData = array(
-            "ExpenseDate>="=>$fdate,
-            "ExpesneDate"=>date('Y-m-d'),
-            // "UserId"=> $session->get("user_id"),
-        );
-        // $Last7Expense = $modelE->where($Last7ExpenseData)->groupBy("ExpenseData")->findAll();   
-        // return print_r($Last7ExpenseData);
+        $fdate = date('Y-m-d',strtotime("+1 days"));
+        // $Last7ExpenseData = array(
+        //     // "ExpenseDate>="=>$fdate,
+        //     // "ExpesneDate<="=>date('Y-m-d');
+        //     "UserId"=> $session->get("user_id"),
+        // );
+        // $Last7Expense = $modelE->where($Last7ExpenseData)->find();  
+        $db = db_connect();
+        $query = $db->query('SELECT ExpenseCost FROM tblexpense WHERE ExpenseDate >= DATE(NOW()) - INTERVAL 7 DAY AND UserId = "'.$session->get('user_id').'"');
+        $last7daysExpense = $query->getResult();
 
-        $Last30ExpenseData = array(
-            "ExpenseDate<="=>date('Y-m-d',strtotime("-1 month")),
-            "ExpesneDate>="=>date('Y-m-d'),
-            "UserId"=> $session->get("user_id"),
-        );
+        // $last30daysExpenseData = array(
+        //     "ExpenseDate<="=>date('Y-m-d',strtotime("-1 month")),
+        //     "ExpesneDate>="=>date('Y-m-d'),
+        //     "UserId"=> $session->get("user_id"),
+        // );
         // $Last30Expense = $modelE->where($Last30ExpenseData)->findAll();
-
+        $query = $db->query('SELECT ExpenseCost FROM tblexpense WHERE ExpenseDate >= DATE(NOW()) - INTERVAL 30 DAY AND UserId = "'.$session->get('user_id').'"');
+        $last30daysExpense = $query->getResult();
 
         $totalExpenseData = array(
             "UserId"=> $session->get("user_id"),
         );
-        $totalExpense = $modelE->where($totalExpenseData)->findAll();
+        $totalExpense = $modelE->where($totalExpenseData)->find();
 
         return view('dashboard/dashboard', [
                 "totalExpense"=>$totalExpense, 
                 "thisYearExpense"=>$thisYearExpense,
-                "Last30Expense"=>00,
-                "Last7Expense"=>00,
+                "last30daysExpense"=>$last30daysExpense,
+                "last7daysExpense"=>$last7daysExpense,
                 "todayExpense"=>$todayExpense, 
                 "yesterdayExpense"=>$yesterdayExpense,
                 "dashboard"=>"btn-success"

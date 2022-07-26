@@ -35,9 +35,9 @@
                     <div class="easypiechart" id="easypiechart-blue" data-percent="<?php echo $todayExpenseCost; ?>">
                     <span class="percent">
                         <?php if ($todayExpenseCost == "") {
-                            echo "0";
+                            echo "<i class='fa fa-inr'></i> 0";
                             } else {
-                             echo $todayExpenseCost;
+                             echo  "<i class='fa fa-inr'></i> ". $todayExpenseCost;
                              }?>
                         </span>
                     </div>
@@ -50,7 +50,7 @@
                     <h4>Yesterday's Expense</h4>
                     <?php
                         $yesterdayExpenseCost = 0;
-                        foreach($todayExpense as $row) {
+                        foreach($yesterdayExpense as $row) {
 
                             $yesterdayExpenseCost = $yesterdayExpenseCost+$row['ExpenseCost']; 
                         }
@@ -58,9 +58,9 @@
                     <div class="easypiechart" id="easypiechart-orange" data-percent="<?php echo $yesterdayExpenseCost; ?>">
                         <span class="percent">
                             <?php if ($yesterdayExpenseCost == "") {
-                                echo "0";
+                                echo "<i class='fa fa-inr'></i> 0";
                             } else {
-                            echo $yesterdayExpenseCost;
+                            echo "<i class='fa fa-inr'></i> " .$yesterdayExpenseCost;
                             } ?>
                         </span>
                     </div>
@@ -71,31 +71,45 @@
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <h4>Last 7day's Expense</h4>
+                    <?php
+                        $last7daysExpenseCost = 0;
+                        foreach($last7daysExpense as $row) {
+
+                            $last7daysExpenseCost = $last7daysExpenseCost+$row->ExpenseCost; 
+                        }
+                    ?>
                     <div class="easypiechart" id="easypiechart-teal" data-percent="<?php echo 0; ?>">
                         <span class="percent">
-                            <?php //if ($last7Expense == "") {
-                             echo "0";
-                            //  } else {
-                            //  echo $last7Expense;
-                            //  }
+                            <?php if ($last7daysExpense == "") {
+                             echo "<i class='fa fa-inr'></i> 0";
+                                } else {
+                                echo "<i class='fa fa-inr'></i>".$last7daysExpenseCost;
+                                }
                              ?>
                         </span>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="col-xs-6 col-md-3">
             <div class="panel panel-default">
+                <?php
+                    $last30daysExpenseCost = 0;
+                    foreach($last30daysExpense as $row) {
 
+                        $last30daysExpenseCost = $last30daysExpenseCost+$row->ExpenseCost; 
+                    }
+                    ?>
                 <div class="panel-body easypiechart-panel">
                     <h4>Last 30day's Expenses</h4>
                     <div class="easypiechart" id="easypiechart-red" data-percent="<?php echo 0; ?>">
                     <span class="percent">
-                        <?php //if ($last30Expense == "") {
-                                echo "0";
-                            // } else {
-                            //     echo $last30Expense;
-                            // }
+                        <?php if (empty($last30daysExpense)) {
+                                echo "<i class='fa fa-inr'></i> 0";
+                             } else {
+                                echo $last30daysExpenseCost;
+                             }
                         ?>
                         </span>
                     </div>
@@ -113,17 +127,17 @@
                     <h4>Current Year Expenses</h4>
                     <?php
                         $thisYearExpenseCost = 0;
-                        foreach($todayExpense as $row) {
+                        foreach($thisYearExpense as $row) {
 
                             $thisYearExpenseCost = $thisYearExpenseCost+$row['ExpenseCost']; 
                         }
                     ?>
-                    <div class="easypiechart" id="easypiechart-red" data-percent="<?php echo $thisYearExpenseCost; ?>">
+                    <div class="easypiechart" id="easypiechart-green" data-percent="<?php echo $thisYearExpenseCost; ?>">
                         <span class="percent">
                         <?php if ($thisYearExpenseCost == "") {
-                                echo "0";
+                                echo "<i class='fa fa-inr'></i> 0";
                             } else {
-                                echo "(Rs) ". $thisYearExpenseCost;
+                                echo "<i class='fa fa-inr'></i> ". $thisYearExpenseCost;
                             }
                         ?>
                         </span>
@@ -138,17 +152,17 @@
                     <h4>Total Expenses</h4>
                     <?php
                         $totalExpenseCost = 0;
-                        foreach($todayExpense as $row) {
+                        foreach($totalExpense as $row) {
 
                             $totalExpenseCost = $totalExpenseCost+$row['ExpenseCost']; 
                         }
                     ?>
-                    <div class="easypiechart" id="easypiechart-red" data-percent="<?php echo $totalExpenseCost; ?>">
+                    <div class="easypiechart" id="easypiechart" data-percent="<?php echo $totalExpenseCost; ?>">
                     <span class="percent">
                         <?php if ($totalExpenseCost == "") {
-                                echo "0";
+                                echo "<i class='fa fa-inr'></i> 0";
                             } else {
-                                echo "(Rs) ". $totalExpenseCost;
+                                echo "<i class='fa fa-inr' aria-hidden=true></i>' ". $totalExpenseCost;
                             }
                             ?>
                         </span>

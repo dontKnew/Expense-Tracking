@@ -14,8 +14,7 @@
         <div class="col-lg-12">
 
             <div class="panel panel-default">
-                <div class="panel-heading">Change Password</div>
-                
+                <div class="panel-heading">User Security <i class="fa fa-user-secret" aria-hidden="true"></i></div>   
                 <!-- 
                 <?php if(isset($validation)) { ?>
 						<div class="alert alert-danger" role="alert">
@@ -37,14 +36,14 @@
 
                         <?php echo form_open('changePassword', ['name' => 'signup']); ?>
                         <div class="form-group">
-                            <label>Current Password</label>
+                            <label>Current Password <i class="fa fa-key" aria-hidden="true"></i></label>
                             <?php echo form_password(['name' => 'currentpassword', 'id' => 'currentpassword', 'class' => 'form-control', 'placeholder' => 'Enter the Password', 'value' => set_value('currentpassword')]); ?>
                             <?php if(isset($validation)) { ?>
                                 <div style="color:red"><?= $validation->getError('currentpassword');?></div>
                             <?php }?>
                         </div>
                         <div class="form-group">
-                            <label style="color:#000">New Password</label>
+                            <label style="color:#000">New Password <i class="fa fa-key" aria-hidden="true"></i></label>
                             <?php echo form_password(['name' => 'newpassword', 'id' => 'newpassword', 'class' => 'form-control', 'placeholder' => 'Enter the Password', 'value' => set_value('newpassword')]); ?>
                             <?php if(isset($validation)) { ?>
                                 <div style="color:red"><?= $validation->getError('newpassword');?></div>
@@ -52,7 +51,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label style="color:#000">Confirm Password</label>
+                            <label style="color:#000">Confirm Password <i class="fa fa-key" aria-hidden="true"></i></label>
                             <?php echo form_password(['name' => 'confirmpassword', 'id' => 'confirmpassword', 'class' => 'form-control', 'placeholder' => 'Confirm the Password', 'value' => set_value('confirmpassword')]); ?>
                             <?php if(isset($validation)) { ?>
                                 <div style="color:red"><?= $validation->getError('confirmpassword');?></div>
