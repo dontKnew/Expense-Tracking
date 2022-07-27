@@ -65,7 +65,8 @@ class DashboardController extends BaseController
                 "last7daysExpense"=>$last7daysExpense,
                 "todayExpense"=>$todayExpense, 
                 "yesterdayExpense"=>$yesterdayExpense,
-                "dashboard"=>"btn-success"
+                "dashboard"=>"btn-success",
+                "title"=> "Dashboard | Expense Tracker"
             ]
         );
     }
@@ -113,10 +114,14 @@ class DashboardController extends BaseController
             } else {
                 // $data['validation'] = $this->validator;
                 // $data['changePassword'] = "btn-success";
-                return view('dashboard/changePassword', ["validation"=>$this->validator, "changePassword"=>"btn-success"]);
+                return view('dashboard/changePassword', [
+                    "validation"=>$this->validator,
+                     "changePassword"=>"btn-success",
+                     "title"=>"change-password | Expense Tracker"
+                    ]);
             }
         }
-        return view('dashboard/changePassword', ["changePassword"=>"btn-success"]);
+        return view('dashboard/changePassword', ["changePassword"=>"btn-success", "title"=>"change-password | Expense Tracker"]);
     }
 
     function addExpenses()
@@ -147,15 +152,16 @@ class DashboardController extends BaseController
                 } catch (Exception $e) {
                     $session->setFlashData('error', $e);
                     // return redirect('newexpense');
-                    return view('dashboard/Expense/add');
+                    return view('dashboard/Expense/add', ["title"=>"add-expense | Expense Tracker"]);
                 }
             } else {
                 $data['validation'] = $this->validator;
+                $data['title'] = "add-expense | Expense Tracker";
                 return view('dashboard/Expense/add', $data);
                 // return print_r($data['alidation']->listErrors());
             }
         }
-        return view('dashboard/Expense/add', ["expense"=>"btn-success"]);
+        return view('dashboard/Expense/add', ["title"=>"add-expense | Expense Tracker", "expense"=>"btn-success"]);
     }
 
     public function ManageExpenses()
@@ -166,7 +172,8 @@ class DashboardController extends BaseController
         $expense = [
             "expenses" => $data,
             "count" => count($data),
-            "expense"=>"btn-success"
+            "expense"=>"btn-success",
+            "title"=>"manage | Expense Tracker"
         ];
         return view('dashboard/Expense/manage', $expense);
     }
@@ -178,7 +185,8 @@ class DashboardController extends BaseController
         $expense = [
             "expenses" => $data,
             "count" => count($data),
-            "expense"=>"btn-success"
+            "expense"=>"btn-success",
+            "title"=>"all-expenses | Expense Tracker"
         ];
         return view('dashboard/Expense/list', $expense);
     }
@@ -231,9 +239,10 @@ class DashboardController extends BaseController
                 }
             } else {
                 $data['validation'] = $this->validator;
+                $data['title'] = "profile | Expense Tracker";
                 return view('dashboard/profile', $data);
             }
         }
-        return view('dashboard/profile', ["profile"=>"btn-success"] );
+        return view('dashboard/profile', ["profile"=>"btn-success", "title"=>"profile | Expense Tracker"] );
     }
 }

@@ -9,13 +9,13 @@ class Home extends BaseController
     public function index()
     {
         helper('form');
-        return view('login');
+        return view('login', ["title"=>"Login | Expense Tracker"]);
     }
 
     public function register()
     {
         helper('form');
-        return view('register');
+        return view('register', ["title"=>"Register | Expense Tracker"]);
     }
 
     public function addUser()
@@ -49,13 +49,14 @@ class Home extends BaseController
             $query=$userModel->save($data);
                 if($query){
                     $session->setFlashData('success','Registration successfull, Now you can login.');	
-                    return view('register');
+                    return view('register', ["title"=>"Register | Expense Tracker"]);
                 } else {
                     $session->setFlashData('error','Something went wrong. Please try again.');
-                    return view('register');
+                    return view('register', ["title"=>"Register | Expense Tracker"]);
                 }
         }else {
             $data['validation'] = $this->validator;
+            $data['title'] = "Register | Expense Tracker"; 
             return view('register', $data);   
         }
     }
@@ -101,6 +102,7 @@ class Home extends BaseController
                 }
             }else {
                 $data['validation'] = $this->validator;
+                $data['title'] = "login | Expense Tracker";
                 return view('/', $data);
             }
             return view('/');
@@ -131,10 +133,11 @@ class Home extends BaseController
                     }
                 }else {
                     $data['validation'] = $this->validator;
+                    $data['title'] = "reset-password | Expense Tracker";
                     return view('reset_password', $data);
                 }
             }
-            return view('reset_password');
+            return view('reset_password', ["title"=>"reset-password | Expense Tracker"]);
         }
 
         public function resetPassword2()
@@ -180,10 +183,11 @@ class Home extends BaseController
 
                 }else {
                     $data['validation'] = $this->validator;
+                    $data['title'] = "reset-password | Expense Tracker";
                     return view('reset_password2', $data);
                 }
             }
-            return view('reset_password2');
+            return view('reset_password2', ["title"=>"Register | Expense Tracker"]);
         }
     
         public function logout()

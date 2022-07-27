@@ -29,9 +29,10 @@ class ReportController extends BaseController
                 return view('dashboard/Expense/Report/daywiseList', ['reportdetails'=>$data,'fromdate'=>$this->request->getVar('fromdate'),'todate'=>$this->request->getVar('todate')]);
             }else {
                 $data['validation'] = $this->validator;
+                $data['title'] = "Report | Expense Tracker";
                 return view('dashboard/Expense/Report/daywise', $data);
             }    
         }
-        return view('dashboard/Expense/Report/daywise', ["report"=>"active"]);;
+        return view('dashboard/Expense/Report/daywise', ["report"=>"active", "title"=>"Report | Expense Tracker"]);
     }
 }

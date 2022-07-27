@@ -1,5 +1,15 @@
 # Codeigniter 4 Expenses Tracking Projec
+- I have made simple daily expense track project with codeigniter 4 
+- This is very simple and easy project, if anyone is begnnier in codeingier 4 thats very help ful
 
+## Project Features
+1. Anyone can register an account and manage his own daily life expense. 
+2. Report
+3. Dashboard 
+4. Profile setting
+5. forget password
+6. reset password
+7. login etc.
 
 ## Project Setup : 
 1. create database in the name of => detsdb
@@ -11,4 +21,7 @@
 Email : meena@gmail.com
 Password : 786786
 
-### For More details email to israfil123.sa@gmail.com
+### For More details email to israfil123.sa@gmail.com or contact us
+### 📫 Get in touch with me
+[![Facebook](https://img.shields.io/badge/facebook-0077B5?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/people/Failure-B%C3%B8y/100023854041628/) || [![Youtube](https://img.shields.io/badge/youtube-DD0031?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCx17TpbQ8JoQ-EdeltD1LIA) || [![Github](https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/dontknew)
+

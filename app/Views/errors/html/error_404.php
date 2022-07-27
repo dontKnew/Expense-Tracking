@@ -78,6 +78,8 @@
             <?php else : ?>
                 Sorry! Cannot seem to find the page you were looking for.
             <?php endif ?>
+                <br> <br> <br>
+            <a href="/">Back To Home</a>
         </p>
     </div>
 </body>

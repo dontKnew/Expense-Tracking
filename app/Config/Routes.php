@@ -54,7 +54,9 @@ $routes->get('Expenses/delete/(:num)', 'DashboardController::DeleteExpenses/$1',
 $routes->match(['get','post'],'Profile', 'DashboardController::Profile', ["filter"=>'auth']);
 $routes->match(['get','post'], 'report/datewise', 'ReportController::DayWise', ["filter"=>'auth']);
 
-
+// $routes->set404Override(function(){
+//     return view('custom_errors/404');
+// });
 /*
  * --------------------------------------------------------------------
  * Additional Routing
