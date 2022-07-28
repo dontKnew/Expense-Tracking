@@ -22,7 +22,6 @@ Email : meena@gmail.com
 Password : 786786
 
 ## Demo Pictures
-<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/changepass.png"/>
 
 <img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/register.png"/>
 <img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/login.png"/>
