@@ -22,15 +22,16 @@ Email : meena@gmail.com
 Password : 786786
 
 ## Demo Pictures
-<img src="https://github.com/dontKnew/WMS/blob/main/dist/github%20image/login.png"/>
-<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/tree/master/public/assets/images/screenshot/register.png"/>
-<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/tree/master/public/assets/images/screenshot/login.png"/>
-<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/tree/master/public/assets/images/screenshot/forget.png"/>
-<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/tree/master/public/assets/images/screenshot/reset-pass.png"/>
-<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/tree/master/public/assets/images/screenshot/dashboard.png"/>
-<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/tree/master/public/assets/images/screenshot/changepass.png"/>
-<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/tree/master/public/assets/images/screenshot/expense.png"/>
-<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/tree/master/public/assets/images/screenshot/profile.png"/>
+<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/changepass.png"/>
+
+<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/register.png"/>
+<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/login.png"/>
+<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/forget.png"/>
+<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/reset-pass.png"/>
+<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/dashboard.png"/>
+<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/changepass.png"/>
+<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/expense.png"/>
+<img src="https://github.com/dontKnew/Expense-Tracking-codeigniter-4/blob/master/public/assets/images/screenshot/profile.png"/>
 
 
 ### For More details email to israfil123.sa@gmail.com or contact us
